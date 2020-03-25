@@ -2,13 +2,19 @@ import styled from 'styled-components';
 
 export const BannerContainer = styled.div`
   height: 70vh;
+  width: 100vw;
   display: flex;
   background-image: linear-gradient(
       to top,
       rgba(${props => props.theme.mainColor}, 1),
-      rgba(${props => props.theme.mainColor}, 0.7)
+      rgba(${props => props.theme.mainColor}, 0.1)
     ),
-    url('https://www.incimages.com/uploaded_files/image/970x450/getty_505442827_408656.jpg');
+    linear-gradient(
+      to right,
+      rgba(${props => props.theme.mainColor}, 0.7),
+      rgba(${props => props.theme.secondaryColor}, 0.7)
+    ),
+    url('https://aws.boxofficebuz.com/articles/2018/10/02/background-board-card-825262.jpg');
   background-size: cover;
 `;
 
@@ -16,11 +22,8 @@ export const HeaderContainer = styled.div`
   margin: 10rem auto;
   width: 60%;
   height: 50%;
-  // background: rgba(${props => props.theme.textColor}, 0.2);
   display: flex;
   flex-direction: column;
-  // border: 10px solid transparent;
-  // box-shadow: 0 0 100px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.2);
 `;
 
 export const LogoContainer = styled.div`
