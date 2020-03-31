@@ -19,8 +19,7 @@ export const BannerContainer = styled.div`
 `;
 
 export const HeaderContainer = styled.div`
-  margin: 10rem auto;
-  width: 60%;
+  margin: 3rem auto;
   height: 50%;
   display: flex;
   flex-direction: column;
@@ -29,7 +28,7 @@ export const HeaderContainer = styled.div`
 export const LogoContainer = styled.div`
   height: 10rem;
   width: 10rem;
-  margin: auto;
+  margin: 10rem auto 2rem auto;
 `;
 
 export const Logo = styled.img`

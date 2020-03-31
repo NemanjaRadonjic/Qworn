@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { BannerStatusContext } from '../../../contexts/BannerStatusContext';
 
 import { Link } from 'react-router-dom';
 
 import { IndexContainer, Heading, Text, Button } from './styles';
 
 const Index = () => {
+  const { setBannerStatus } = useContext(BannerStatusContext);
   return (
     <>
       <IndexContainer>
@@ -23,9 +26,15 @@ const Index = () => {
           <br />
           If you want to join our community and buy or sell products you have to
           create an accout
-          <Link to="/register">
-            <Button>Create an accout</Button>
-          </Link>
+          <Button
+            href="#banner"
+            onClick={() => {
+              setBannerStatus('register');
+              window.scrollTo(0, 0);
+            }}
+          >
+            Create an accout
+          </Button>
         </Text>
       </IndexContainer>
     </>

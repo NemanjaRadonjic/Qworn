@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import Login from '../Login';
+import Register from '../Register';
+
+import { BannerStatusContext } from '../../contexts/BannerStatusContext';
 
 import {
   BannerContainer,
@@ -11,14 +16,27 @@ import {
 import logo from '../../images/logo.png';
 
 const Banner = () => {
-  return (
-    <BannerContainer>
-      <HeaderContainer>
+  const { bannerStatus } = useContext(BannerStatusContext);
+
+  const banner = () => {
+    if (bannerStatus === 'login') {
+      return <Login />;
+    } else if (bannerStatus === 'register') {
+      return <Register />;
+    }
+    return (
+      <>
         <LogoContainer>
           <Logo src={logo} alt="logo" />
         </LogoContainer>
         <Header>Qworn</Header>
-      </HeaderContainer>
+      </>
+    );
+  };
+
+  return (
+    <BannerContainer id="banner">
+      <HeaderContainer>{banner()}</HeaderContainer>
     </BannerContainer>
   );
 };

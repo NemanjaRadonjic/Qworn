@@ -7,6 +7,8 @@ export const NavContainer = styled.div`
   width: 100vw;
   background-color: rgb(${props => props.theme.mainColor});
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  position: ${props => props.position};
+  top: ${props => (props.position === 'fixed' ? '0' : 'auto')};
 `;
 
 export const LogoContainer = styled.div`
@@ -36,20 +38,20 @@ export const NavItem = styled.div`
   align-items: center;
   cursor: pointer;
   padding: 0 3rem;
-  box-shadow: inset 0 0px 0 0 rgba(${props => props.theme.secondaryColor}, 0);
+  box-shadow: inset 0 0 0 0 rgba(${props => props.theme.secondaryColor}, 0);
   height: 100%;
   transition: color 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
 
   &:hover,
   &:active {
     color: rgb(${props => props.theme.secondaryColor});
-    box-shadow: inset 0 -5px 0 0 rgba(${props => props.theme.secondaryColor}, 1);
+    box-shadow: inset 0 -5px 0 rgba(${props => props.theme.secondaryColor}, 1);
   }
 `;
 
 export const navLinkActive = {
   color: `rgb(${theme.secondaryColor})`,
-  boxShadow: `inset 0 -5px 0 0 rgba(${theme.secondaryColor}, 1)`
+  boxShadow: `inset 0 -5px 0 rgba(${theme.secondaryColor}, 1)`
 };
 
 export const AuthSide = styled.div`

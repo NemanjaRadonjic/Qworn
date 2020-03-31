@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
+
+import { BannerStatusContext } from '../../contexts/BannerStatusContext';
 
 import { NavLink, Link } from 'react-router-dom';
-
-import { theme } from '../../styles/themes';
 
 import {
   NavContainer,
@@ -17,18 +19,28 @@ import {
 
 import logo from '../../images/logo.png';
 
-const Navbar = props => {
-  console.log(props);
+const Navbar = () => {
+  const { setBannerStatus } = useContext(BannerStatusContext);
+
+  const [navbarPosition, setNavbarPosition] = useState('static');
+
+  useScrollPosition(
+    ({ currPos }) => {
+      if (currPos.y < -550) setNavbarPosition('fixed');
+    },
+    [navbarPosition]
+  );
+
   return (
-    <NavContainer>
+    <NavContainer position={navbarPosition}>
       <NavSide>
         <Link to="/">
           <LogoContainer>
-            <Logo src={logo} alt="logo" />
+            <Logo src={logo} alt="logo" onClick={() => setBannerStatus('')} />
           </LogoContainer>
         </Link>
         <NavLink activeStyle={navLinkActive} to="/home">
-          <NavItem active="true">Home</NavItem>
+          <NavItem>Home</NavItem>
         </NavLink>
         <NavLink activeStyle={navLinkActive} to="/about">
           <NavItem>About</NavItem>
@@ -38,8 +50,22 @@ const Navbar = props => {
         </NavLink>
       </NavSide>
       <AuthSide>
-        <AuthItem>Login</AuthItem>
-        <AuthItem>Register</AuthItem>
+        <AuthItem
+          onClick={() => {
+            setBannerStatus('login');
+            window.scrollTo(0, 0);
+          }}
+        >
+          Login
+        </AuthItem>
+        <AuthItem
+          onClick={() => {
+            setBannerStatus('register');
+            window.scrollTo(0, 0);
+          }}
+        >
+          Register
+        </AuthItem>
       </AuthSide>
     </NavContainer>
   );

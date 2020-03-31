@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   * {
     font-family: 'Baloo 2', cursive;
+    scroll-behavior: smooth;
   }
   body {
     font-family: 'Baloo 2', cursive;
